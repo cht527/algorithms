@@ -14,6 +14,11 @@
 
 解题：首先选取数组中右上角的数字。如果该数字等于要查找的数字，查找过程结束；如果该数字大于要查找的数字，剔除这个数字所在的列；如果该数字小于要查找的数字，剔除这个数字所在的行。也就是说如果要查找的数字不在数组的右上角，则每一次都在数组的查找范围中剔除一行或者一列，这样每一步都可以缩小查找的范围，直到找到要查找的数字，或者查找范围为空
 
+// 题目二
+找到字符串中第一个只出现一次的字符
+
+// 题目三
+获取连续正整数之和为sum的所有结果
 
 </code>
 <pre>
@@ -77,9 +82,60 @@ const judgeNumInMatrix = (target,matrix)=>{
 
 console.log(judgeNumInMatrix(5,current_matrix))
 
+// -----------------------------------------------------------
+
+// 题目二
+// 找到字符串中第一个只出现一次的字符
+
+const getFirstNoRepeatStr = (str) =>{
+    if(str.length===1){
+        return str
+    }
+
+    for (var i = 0; i < str.length; i++) {
+        let currentRestStr = str.slice(i+1).split('');
+        if(!currentRestStr.includes(str[i]) && currentRestStr.length>0){
+            return str[i]
+        }
+    }
+    return null
+}
+
+const str='ojkece'
+console.log(getFirstNoRepeatStr(str));
 
 
+// 3、-----------------------------------------------------------
+const linearSum = (sum) =>{
+    let start=1;
+    let end=2;
+    let curSum=3;
 
+    let res=[];
+
+    while(end<sum){
+        if(curSum<sum){
+            end++;
+            curSum+=end;
+        }else if (curSum>sum) {
+            curSum-=start;
+            start++
+        }else{
+            let tempArr=[];
+            for (var i = start; i <= end; i++) {
+                tempArr.push(i) 
+            }
+            res.push(tempArr);
+            curSum-=start;// 重新开始查找
+            start++;
+            end++;
+            curSum+=end;
+        }
+    }
+    return res
+} 
+
+console.log(transArrayToMap(100))
 </script>
 </body>
 </html>

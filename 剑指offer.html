@@ -17,9 +17,10 @@
 // 题目二
 找到字符串中第一个只出现一次的字符
 
-// 题目三
-获取连续正整数之和为sum的所有结果
+// 题目三: 顺时针打印矩阵
 
+// 题目四
+获取连续正整数之和为sum的所有结果
 </code>
 <pre>
 
@@ -105,7 +106,51 @@ const str='ojkece'
 console.log(getFirstNoRepeatStr(str));
 
 
-// 3、-----------------------------------------------------------
+// ---------------------------------------------
+// 题目三
+const initMatrix = produceMatrix(5,5,true);
+
+
+const rotateMatrix = (matrix) => {
+    let top=0;
+    let left=0;
+    let right=matrix[0].length-1;
+    let bottom=matrix.length-1;
+
+    let res=[];
+
+    while(top<=bottom && left<=right){
+        for (var i = left; i <= right; i++) {
+            res.push(matrix[top][i])   
+        }
+        
+        for (var j = top+1; j <= bottom ; j++) {
+            res.push(matrix[j][bottom])
+        }
+        
+        if(top!==bottom){
+            for (var k = right-1; k >=left; k--) {
+                res.push(matrix[bottom][k])
+            }
+        }
+        
+        if(left!==right){
+            for (var m = bottom-1; m >top; m--) {
+                res.push(matrix[m][left])
+            }
+        }
+
+        left++;
+        right--;
+        top++;
+        bottom--
+    }
+
+    return res
+}
+
+
+// 4、-----------------------------------------------------------
 const linearSum = (sum) =>{
     let start=1;
     let end=2;
@@ -135,7 +180,7 @@ const linearSum = (sum) =>{
     return res
 } 
 
-console.log(transArrayToMap(100))
+console.log(linearSum(100))
 </script>
 </body>
 </html>

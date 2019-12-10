@@ -14,7 +14,7 @@
 
 解题：首先选取数组中右上角的数字。如果该数字等于要查找的数字，查找过程结束；如果该数字大于要查找的数字，剔除这个数字所在的列；如果该数字小于要查找的数字，剔除这个数字所在的行。也就是说如果要查找的数字不在数组的右上角，则每一次都在数组的查找范围中剔除一行或者一列，这样每一步都可以缩小查找的范围，直到找到要查找的数字，或者查找范围为空
 
-
+// 题目二: 顺时针打印矩阵
 </code>
 <pre>
 
@@ -78,7 +78,49 @@ const judgeNumInMatrix = (target,matrix)=>{
 console.log(judgeNumInMatrix(5,current_matrix))
 
 
+// ---------------------------------------------
+// 题目二 
+const initMatrix = produceMatrix(5,5,true);
 
+
+
+const rotateMatrix = (matrix) => {
+    let top=0;
+    let left=0;
+    let right=matrix[0].length-1;
+    let bottom=matrix.length-1;
+
+    let res=[];
+
+    while(top<=bottom && left<=right){
+        for (var i = left; i <= right; i++) {
+            res.push(matrix[top][i])   
+        }
+        
+        for (var j = top+1; j <= bottom ; j++) {
+            res.push(matrix[j][bottom])
+        }
+        
+        if(top!==bottom){
+            for (var k = right-1; k >=left; k--) {
+                res.push(matrix[bottom][k])
+            }
+        }
+        
+        if(left!==right){
+            for (var m = bottom-1; m >top; m--) {
+                res.push(matrix[m][left])
+            }
+        }
+
+        left++;
+        right--;
+        top++;
+        bottom--
+    }
+
+    return res
+}
 
 </script>
 </body>

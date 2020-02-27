@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-02-27 11:25:38
+ * @LastEditTime: 2020-02-27 17:01:32
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /algorithms/LRU.js
+ */
 
  class Node{
     constructor(key,value){
@@ -8,6 +16,16 @@
     }
 }
 
+/*
+ * Illustration of the design:
+ *
+ *                                              
+     ______                ______            ______            ______            ______
+    |       |  next =>    |      | next =>  |      | next =>  |      | next =>  |      |
+    | head  |             |  A   |          |  B   |          |  C   |          | tail |
+    |______ |  <= prev    |______| <= prev  |______| <= prev  |______| <= prev  |______|
+ *
+ */
 class LRUCache{
     constructor(capcity){
         this.capcity=capcity;
@@ -16,12 +34,12 @@ class LRUCache{
         this.head = new Node('', null);
         this.tail = new Node('', null);
         this.head.next = this.tail;
-           this.tail.prev = this.head;
+        this.tail.prev = this.head;
     }
     // 当检索节点或添加新节点时，该节点作为最近使用的节点被带到链接列表的开头。删除节点也是如此。
 
     get(key){
-       if(this.map.hasOwnProperty([key])){
+       if(this.map.hasOwnProperty(key)){
            const node=this.map[key];
            this.remove(node);
            this.add(node);
@@ -32,7 +50,7 @@ class LRUCache{
     }
     // 设置节点时，该keys属性用于在获取该节点时保持检索时间。如果在添加新节点时缓存已满，则将删除距离尾部最远的节点。O(1)
     set(key,value){
-       if(this.map.hasOwnProperty([key])){
+       if(this.map.hasOwnProperty(key)){
            this.remove(this.map[key])
        }
        const newNode=new Node(key,value);

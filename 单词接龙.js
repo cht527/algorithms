@@ -44,7 +44,7 @@ wordList = ["hot","dot","dog","lot","log"]
 
  */
 
-var ladderLength = function(beginWord, endWord, wordList) {
+var ladderLength1 = function(beginWord, endWord, wordList) {
     if(wordList.length===0 || wordList.indexOf(endWord)===-1){
         return 0
     }
@@ -67,6 +67,43 @@ var ladderLength = function(beginWord, endWord, wordList) {
                 wordSet.delete(str)
             }
         }
+    }
+    return 0
+
+};
+
+// 方法二
+
+var ladderLength2 = function(beginWord, endWord, wordList) {
+    if(wordList.length===0 || wordList.indexOf(endWord)===-1){
+        return 0
+    }
+    const charDiff = (str1, str2) => {
+        let changes = 0
+        for (let i = 0; i < str1.length; i++) {
+            if (str1[i] != str2[i]) changes += 1
+        }
+        return changes
+    }
+
+    let wordSet = new Set(wordList)    
+    let queue = [beginWord];
+    var res=2;
+    while (queue.length) {
+        for(var i=0,len=queue.length;i<len;i++){
+            var word=queue.pop();
+            for(var str of wordSet){
+                if(charDiff(word,str)===1){
+                    wordSet.delete(str);
+                    if(str===endWord){
+                        return res;           
+                    }else{
+                        queue.unshift(str);
+                    }
+                }
+            }
+        }
+        res+=1
     }
     return 0
 

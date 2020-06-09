@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-08 17:43:02
- * @LastEditTime: 2020-06-08 17:43:03
+ * @LastEditTime: 2020-06-09 10:36:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /algorithms/0-1背包.js
@@ -41,4 +41,26 @@ var package=function(){
 
 	return dp[N][W]
 
+}
+
+
+
+
+// 完全背包 --凑硬币的组合数，可重复使用
+var amount=5;
+var coins=[1,2,5];
+
+var allPackage=function(){
+	var dp= Array.from({length:amount+1},()=>0);
+	
+	dp[0]=1;// 初始状态：凑0元 只有一种
+
+	for (var i = 0; i < coins.length; i++) {
+		for (var j = 1; j <=amount; j++) {
+			if(j-coins[i]>=0){
+				dp[j]=dp[j]+dp[j-coins[i]]
+			}
+		}
+	}
+	return dp[amount]
 }

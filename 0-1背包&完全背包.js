@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-06-08 17:43:02
- * @LastEditTime: 2020-06-09 10:36:53
+ * @LastEditTime: 2021-01-13 20:43:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /algorithms/0-1背包.js
@@ -64,3 +64,21 @@ var allPackage=function(){
 	}
 	return dp[amount]
 }
+
+// 凑零钱 最少需要的硬币数
+/**
+给定不同面额的硬币 coins 和一个总金额 amount。计算可以凑成总金额所需的最少的硬币个数。如果没有任何一种硬币组合能组成总金额，返回 -1。
+你可以认为每种硬币的数量是无限的。
+ */
+var coinChange = function(coins, amount) {
+    let dp= Array.from({length: amount+1},()=>amount+1);
+    dp[0]=0
+    for(let i=0;i<=amount;i++){
+        for(let j=0;j<coins.length;j++){
+            if(i-coins[j]>=0){
+                dp[i]=Math.min(dp[i],dp[i-coins[j]]+1)
+            }
+        }
+    }
+    return dp[amount]>amount ? -1 :dp[amount]
+};

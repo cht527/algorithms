@@ -1,47 +1,56 @@
 /*
  * @Author: Cao Haitao
  */
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    const stack1 = [];
 
-function ListNode(val, next) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
-}
+	const stack2 = [];
 
-function addTwoNumbers(l1,l2){
-   let head = null;
-   let tail = null;
+	while(l1!=null){
+		stack1.push(l1.val)
+		l1=l1.next
+	}
 
-   let carry = 0;
+	while(l2!=null){
+		stack2.push(l2.val)
+		l2=l2.next
+	}
 
-   while(l1 != null || l2 !== null){
-       let l1Val = l1 != null ? l1.val : 0;
-       let l2Val = l2 != null ? l2.val : 0;
-       let sumVal = l1Val + l2Val + carry;
+	let carry = 0
 
+	let res = null;
 
-       if(head===null){
-           head = tail = new ListNode(sumVal % 10);
-       }else{
-           tail.next = new ListNode(sumVal % 10);
-           tail = tail.next
-       }
+	while(stack1.length || stack2.length || carry!==0){
 
-       carry = Math.floor(sumVal / 10);
+		let a = stack1.length===0 ? 0 : stack1.pop();
 
-       if(l1 !== null){
-           l1 = l1.next;
-       }
+		let b = stack2.length===0 ? 0 : stack2.pop();
 
-       if(l2 !== null){
-           l2 = l2.next;
-       }
+		let value = a+b+carry;
 
-   }  
+		carry = Math.floor(value / 10);
 
-   if(carry>0){
-       tail.next = new ListNode(carry)
-   }
+		value %= 10;
 
-   return head
-}
+		let node = new ListNode(value);
 
+		node.next = res; // 完成当前位的相加
+
+		res = node; // 保存当前结果
+
+	}
+
+	return res
+};

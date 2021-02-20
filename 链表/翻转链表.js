@@ -1,11 +1,22 @@
 /*
  * @Author: Cao Haitao
  */
+/*
+ * @Author: Cao Haitao
+ */
+import { LinkedList, Node } from './linkList'
 function reverseLinkList(l){
 
-	let cur = l;
+	let head = l.head;
+
+	if (head===null || head.next===null) {
+		return l
+	}
+
+	let cur = head;
 
 	let pre = null;
+
 
 	while(cur){
 
@@ -20,5 +31,15 @@ function reverseLinkList(l){
 	}
 
 	return pre
-
 }
+
+const head = new Node(-1);
+
+const list = new LinkedList(head);
+
+for (var i = 0; i < 4; i++) {
+	list.append(new Node(i))
+}
+
+
+console.log(reverseLinkList(list))

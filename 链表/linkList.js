@@ -1,3 +1,6 @@
+/*
+ * @Author: Cao Haitao
+ */
 class Node{
     constructor(val){
         this.val = val;
@@ -53,4 +56,6 @@ class LinkedList {
         prevNode.next = nextNode
     }
 }
+
+export { LinkedList , Node}
 

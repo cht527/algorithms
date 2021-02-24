@@ -1,3 +1,6 @@
+/*
+ * @Author: Cao Haitao
+ */
 function trialDivision(number) {
   // Check if number is integer.
   if (number % 1 !== 0) {
@@ -29,3 +32,5 @@ function trialDivision(number) {
 
   return true;
 }
+
+module.exports=trialDivision

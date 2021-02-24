@@ -1,9 +1,7 @@
 /*
  * @Author: Cao Haitao
  */
-/*
- * @Author: Cao Haitao
- */
+
 
 
 function ListNode(val, next) {
@@ -74,3 +72,5 @@ var mergeTwoLists2 = function(l1,l2) {
    return prehead.next;
 
 }
+
+module.exports = mergeTwoLists1

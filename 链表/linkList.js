@@ -1,6 +1,9 @@
 /*
  * @Author: Cao Haitao
  */
+/*
+ * @Author: Cao Haitao
+ */
 class Node{
     constructor(val){
         this.val = val;
@@ -57,5 +60,5 @@ class LinkedList {
     }
 }
 
-export { LinkedList , Node}
+module.exports = { LinkedList , Node}
 

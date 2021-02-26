@@ -4,6 +4,9 @@
 /*
  * @Author: Cao Haitao
  */
+/*
+ * @Author: Cao Haitao
+ */
 var maxProduct = function(nums) {
     if (nums.length === 0) {
 		return 0
@@ -33,3 +36,5 @@ var maxProduct = function(nums) {
 
 	return result
 };
+
+module.exports = maxProduct

@@ -6,7 +6,7 @@
  */
 
 
-const productExceptSelf = require('../除自身以外的乘数');
+const productExceptSelf = require('../最大(小)子序列(子串)/最大乘积序列');
 
 test('productExceptSelf',()=> {
 

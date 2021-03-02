@@ -19,7 +19,7 @@ var maxSubArraySum = function(nums) {
             sum+=num
             
         }
-        max=Math.max(max,sum)
+        max=Math.max(max,sum) // 如果都是负数，遍历完成后比大小即可
 
     }
     return max

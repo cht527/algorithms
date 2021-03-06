@@ -22,12 +22,12 @@ var reverseWords = function(s) {
 
     let len=s.length;
 
-    reverse(s,0,len-1);
+    reverse(s,0,len-1); //整体反转
 
     let start=0;
 
     for(let i=0;i<len;i++){
-        if(s[i] === ' '){
+        if(s[i] === ' '){ // 局部反转
             reverse(s,start,i-1);
             start = i+1
         }

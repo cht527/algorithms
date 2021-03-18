@@ -47,7 +47,7 @@ for (var i = 0; i < 4; i++) {
 // 递归
 var reverseList = function(head) {
 
-	if (head.next===null) {
+	if (head===null || head.next===null) {
 		return head
 	}
 

@@ -5,6 +5,8 @@
  * @Author: Cao Haitao
  */
 import { LinkedList, Node } from './linkList'
+
+
 function reverseLinkList(l){
 
 	let head = l.head;
@@ -40,6 +42,26 @@ const list = new LinkedList(head);
 for (var i = 0; i < 4; i++) {
 	list.append(new Node(i))
 }
+
+
+// 递归
+var reverseList = function(head) {
+
+	if (head.next===null) {
+		return head
+	}
+
+	let last  = reverseList(head.next);
+
+
+	head.next.next = head;
+
+	head.next = null;
+
+	return last
+}
+
+
 
 
 // console.log(reverseLinkList(list))

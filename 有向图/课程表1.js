@@ -82,9 +82,11 @@ const canFinish = (numCourses, prerequisites) => {
   for (let i = 0; i < inDegree.length; i++) { // 所有入度为0的课入列
     if (inDegree[i] == 0) queue.push(i);
   }
-  let count = 0;
+  let count = 0; // 选了多少课程
+  let res = []; // 存放选课数组
   while (queue.length) {
     const selected = queue.shift();           // 当前选的课，出列
+    res.push(selected);
     count++;                                  // 选课数+1
     const toEnQueue = map[selected];          // 获取这门课对应的后续课
     if (toEnQueue && toEnQueue.length) {      // 确实有后续课
@@ -96,5 +98,8 @@ const canFinish = (numCourses, prerequisites) => {
       }
     }
   }
-  return count == numCourses; // 选了的课等于总课数，true，否则false
+  return {
+    res: count == numCourses ? res: [],
+    canFinish:count == numCourses, // 选了的课等于总课数，true，否则false
+  }
 };

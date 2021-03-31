@@ -16,7 +16,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var deleteDuplicates = function(head) {
+var deleteDuplicates1 = function(head) {
     let node = head;
 
 	while(node.next){
@@ -30,4 +30,40 @@ var deleteDuplicates = function(head) {
 	}
 
 	return head
+};
+
+/*
+存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除链表中所有存在数字重复情况的节点，只保留原始链表中 没有重复出现 的数字。
+
+返回同样按升序排列的结果链表。
+
+ */
+
+
+
+var deleteDuplicates2 = function(head) {
+
+	if(!head || head.next===null){
+        return head
+    }
+
+    const dummy = new ListNode(0, head);
+
+    let node = dummy;
+
+    while(node.next && node.next.next){
+
+        if(node.next.val === node.next.next.val){
+            let x = node.next.val;
+
+            while(node.next && node.next.val ===x){
+                node.next = node.next.next
+            }
+        }else{
+            node=node.next
+        }
+    }
+
+    return dummy.next
+
 };

@@ -31,6 +31,7 @@ var merge = function(intervals) {
         // 更新右端点为最大值
         res[res.length - 1][1] = intervals[i][1]
       }
+      // 其他情况 说明包含在 res范围内，保持res右端点不变
     }
   }
 

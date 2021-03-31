@@ -6,10 +6,22 @@
  */
 
 
-const productExceptSelf = require('../最大(小)子序列(子串)/最大乘积序列');
 
-test('productExceptSelf',()=> {
+const {removeNthFromEnd, ListNode} = require('../链表/删除链表倒数第n个元素');
 
-    expect(productExceptSelf([1,2,3,4])).toEqual([24,12,8,6])
+test('removeNthFromEnd',()=> {
+    let head = new ListNode(0,null);
+
+    let node = head;
+   
+    let n=5;
+   
+    while(n){
+        node.next = new ListNode(n,null);
+        node = node.next;
+        n--
+    }
+
+    expect(removeNthFromEnd(head.next,2).val).toBe(5)
 
 })

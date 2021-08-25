@@ -68,6 +68,7 @@ function removeNthFromEnd(head,n){
 
 module.exports = {
     removeNthFromEnd1,
+	removeNthFromEnd,
     ListNode
 };
 

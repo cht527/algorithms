@@ -11,3 +11,37 @@
  * 输入：nums = [6,7,0,3,4], target = 2
  * 输出：false
  */
+
+ function find1(arr){
+    if(arr.length===0){
+        return 0
+    }
+    if(arr.length===1){
+        return arr[0] === 1 ? 1 : 0
+    }
+    let count = 0;
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]===1){
+            if(i===arr.length-1){
+                count+=1;
+                break
+            }
+            let j= i+1;
+            while(j<arr.length){
+                if(arr[j]!==1){
+                    count+=1;
+                    break;
+                }else{
+                    j++
+                }
+            }
+        }
+        
+    }
+
+    return count
+ }
+
+ module.exports={
+     find1
+ }

@@ -5,8 +5,6 @@
  * @Author: Cao Haitao
  */
 
-
-
 const {removeNthFromEnd, ListNode} = require('../链表/删除链表倒数第n个元素');
 
 test('removeNthFromEnd',()=> {

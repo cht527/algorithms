@@ -16,7 +16,7 @@ class Priorityqueue{
       this.queue.push(queueItem);
     }else{
       let flag=false;
-      for(let i=0,len=this.length();i<len;i++){
+      for(let i=0,len=this.length;i<len;i++){
         if(queueItem.priority<this.queue[i].priority){ // 假设数值越小优先级越高
           this.queue.splice(i,0,queueItem);
           flag=true; // 已经插队
@@ -37,7 +37,7 @@ class Priorityqueue{
   clear(){
     this.queue.length=0
   }
-  length(){
+  get length(){
     return this.queue.length
   }
   print(){

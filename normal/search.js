@@ -1,6 +1,6 @@
 
 /*
- * 2. 假设有一个升序数组，经过不确定长度的偏移，得到一个新的数组，我们称为循环升序数组。（例：[0,3,4,6,7] 可能变成 [6,7,0,3,4]）。给定一个数字和一个循环升序数组，
+ *  假设有一个升序数组，经过不确定长度的偏移，得到一个新的数组，我们称为循环升序数组。（例：[0,3,4,6,7] 可能变成 [6,7,0,3,4]）。给定一个数字和一个循环升序数组，
  * 判断这个数字是否在这个数组内，在的话返回 true，否则返回 false。要求时间复杂>度 O(logN)
  *
  * 示例 1：
@@ -21,7 +21,7 @@
         return arr[0] === target 
     }
     let start = 0;
-    let end = nums.length;
+    let end = nums.length-1 ;
 
     while(start <= end){ // 有等于号才能完成最后一次比较
         let mid = Math.floor(start + (end - start) / 2); // 避免数据过大溢出
@@ -31,7 +31,7 @@
         if(arr[mid] < target){
             start = mid+1
         }
-        if(arr[mid] < target){
+        if(arr[mid] > target){
             end = mid-1
         }
     }

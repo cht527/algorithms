@@ -104,3 +104,73 @@ myLRU.set(6, 6); // 4 <-> 5 <-> 1 <-> 2 <-> 6
 myLRU.set(7, 7); // 5 <-> 1 <-> 2 <-> 6 <-> 7
 
 myLRU.set(8, 8); // 1 <-> 2 <-> 6 <-> 7 <-> 8
+
+
+class Node{
+    constructor(key,value){
+        this.key = key;
+        this.value = value;
+        this.prev = null;
+        this.next = null
+    }
+}
+
+class lru{
+    constructor(capcity){
+        this.capcity= capcity;
+        this.length = 0;
+        this.tail = new Node('',null);
+        this.prev = new Node('',null);
+        this.map = {};
+        this.prev.next = this.tail;
+        this.tail.prev = this.prev
+    }
+
+    get(key){
+        if(this.map[key]){
+            // 更新
+            this.remove(this.map[key]);
+            this.add(this.map[key]);
+            return this.map[key].value
+        }
+
+        return null
+    }
+
+    set(key,value){
+        if (this.map[key]) {
+            this.remove(this.map[key]);
+        } 
+        const newNode = new Node(key,value);
+        this.add(newNode);
+        this.map[key] = newNode;
+
+        if(this.capcity < this.length){
+           const realHead = this.head.next;
+           this.remove(realHead);
+           delete this.map[realHead.key]
+        }
+        
+    }
+
+    remove(node){
+        node.prev.next = node.next;
+
+        node.next.prev = node.prev;
+
+        this.length--
+    }
+
+    add(node){
+        const realTail = this.tail.prev;
+        realTail.next = node;
+        node.prev = realTail;
+
+        node.next = this.tail;
+        this.tail.prev = node;
+
+        this.length++
+    }
+
+
+}

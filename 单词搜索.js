@@ -22,7 +22,7 @@ board =
 
 // 思路与算法
 
-// 设函数 {check}(i, j, k)check(i,j,k) 判断以网格的 (i, j) 位置出发，能否搜索到单词 {word}[k..]word[k..]，其中 {word}[k..] 表示字符串 {word}word 从第 k 个字符开始的后缀子串。如果能搜索到，则返回 {true}true，反之返回 {false}false。函数 {check}(i, j, k)check(i,j,k) 的执行步骤如下：
+// 设函数 check(i,j,k) 判断以网格的 (i, j) 位置出发，能否搜索到单词 word[k..]，其中 {word}[k..] 表示字符串 word 从第 k 个字符开始的后缀子串。如果能搜索到，则返回 true，反之返回 false。函数 (i, j, k)check(i,j,k) 的执行步骤如下：
 
 // 如果 {board}[i][j] \neq s[k]board[i][j] 
 //  =s[k]，当前字符不匹配，直接返回 {false}false。

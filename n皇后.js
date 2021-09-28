@@ -11,14 +11,8 @@
 let res=[];
 
 var nQueens=function (n) {
-    var board=[];
-    for (var i = 0; i < n; i++) {
-        board[i]=new Array(n).fill(0)
-    }
-    // (new Array(n).fill(0)).map(()=>{
- //         return new Array(n).fill(0)
- //    });
-    console.log(board)
+    const board= Array.from({length: n}, () => Array.from({length: n},()=> 0))
+
     var cols=board[0].length;
 
     var isValid=function(board,row,col){

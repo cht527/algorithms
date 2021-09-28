@@ -13,7 +13,7 @@ var maxSubArraySum = function(nums) {
     var sum=0;
     var max=nums[0];
     for(let num of nums){
-        if(sum<=0){ // 小于0 对之后的子序列无影响
+        if(sum<=0){ // 小于0 对之后的子序列无影响,重置
             sum=num
         }else{      // 大于0 累加
             sum+=num

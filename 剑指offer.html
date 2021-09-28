@@ -186,34 +186,6 @@ const linearSum = (sum) =>{
 
 console.log(linearSum(100))
 
-// 5、 -----------------------------------------
-function combination(n,k){
-    let res=[];
-
-    if(n<k || n<=0 || k<=0){
-        return res;
-    }
-
-    function backTrack(n,k,start,list,res){
-        if(list.length===k){
-            res.push(list.slice());
-            return
-        }
-        for (var i = start; i < n-k+list.length+1; i++) { // 避免无效循环
-            list.push(i);
-            backTrack(n,k,i+1,list,res);
-            // 回溯
-            list.pop()
-        }
-
-    }
-
-    backTrack(n,k,1,[],res)
-
-    return res
-
-}
-
 </script>
 </body>
 </html>

@@ -89,4 +89,49 @@ function bfs(root) {
 }
 
 
-console.log(bfs(data));
+const grid =[
+    ["1","1","0","0","0"],
+    ["1","1","0","0","0"],
+    ["0","0","1","0","0"],
+    ["0","0","0","1","1"]
+]
+  
+
+var numIslands = function(grid) {
+    const row = grid.length;
+    if(row <= 0){
+        return 0
+    }
+ 
+    let num_islands = 0;
+ 
+    const col = grid[0].length;
+ 
+    const dfs = function(grid,r,c){
+     
+         if (r < 0 || c < 0 || r >= row || c >= col || grid[r][c] == '0') {
+             return;
+         }
+ 
+         grid[r][c] = '0';
+         dfs(grid, r - 1, c);
+         dfs(grid, r + 1, c);
+         dfs(grid, r, c - 1);
+         dfs(grid, r, c + 1);
+    }
+ 
+    for(let i=0;i<row;i++){
+        for(let j=0;j<col;j++){
+            if(grid[i][j]==='1'){
+                 num_islands++;
+                 dfs(grid,i,j)
+            }
+            
+        }
+    }
+ 
+    return num_islands
+ 
+ };
+
+console.log(numIslands(grid));

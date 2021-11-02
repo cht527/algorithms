@@ -13,17 +13,17 @@ let longestCommomStr=function(s1,s2){
     let m=s1.length;
     let n=s2.length;
 
-    let dp=Array.from({length:m+1});
+    let dp=Array.from({length:m+1},()=> Array.from({length:n+1},()=>0))
 
-    for (var i = 0; i<=m; i++) {
-        dp[i]=Array.from({length:n+1});
+    // for (var i = 0; i<=m; i++) {
+    //     dp[i]=Array.from({length:n+1});
 
-        dp[i][0]=0;
-    }
+    //     dp[i][0]=0;
+    // }
 
-    for (var j = 0; j <=n; j++) {
-        dp[0][j]=0;
-    }
+    // for (var j = 0; j <=n; j++) {
+    //     dp[0][j]=0;
+    // }
 
     for (var i = 1; i <=m; i++) {
         for (var j = 1; j <=n;j++) {

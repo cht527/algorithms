@@ -1,41 +1,101 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title></title>
-	<style type="text/css">
-		
-	</style>
+    <title></title>
+    <style type="text/css">
+
+    </style>
 </head>
+
 <body>
-	
-</div>
+
+    </div>
 
 
-<script>
-/**
- * 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
- *
- */
-var rotate = function(matrix) {
-    var len=matrix.length;
-    // 先转置
-            for(var i=0;i<len;i++){
-                for(var j=0;j<i;j++){
-                   [matrix[i][j],matrix[j][i]]=[matrix[j][i],matrix[i][j]]
+
+    <script>
+        /**
+         * 给定一个 n × n 的二维矩阵 matrix 表示一个图像。请你将图像顺时针旋转 90 度。
+         *
+         * [             
+         *  [1,2,3],   
+         *  [4,5,6],
+         *  [7,8,9]
+         * ]
+         * 
+         * [9,6,3]
+         * [8,5,2]
+         * [7,4,1]
+         * 
+         * [
+         *  [7,4,1],
+         *  [8,5,2],
+         *  [9,6,3]
+         * ]
+         */
+        var rotate = function(matrix) {
+            var len = matrix.length;
+            // 先转置
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < i; j++) {
+                    [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]]
                 }
             }
-    // 后镜像对称
-            for(var m=0;m<len;m++){
-                for(var n=0;n<len/2;n++){
-                   [matrix[m][n],matrix[m][len-1-n]]=[matrix[m][len-1-n],matrix[m][n]]
+            // 后镜像对称
+            for (var m = 0; m < len; m++) {
+                for (var n = 0; n < len / 2; n++) {
+                    [matrix[m][n], matrix[m][len - 1 - n]] = [matrix[m][len - 1 - n], matrix[m][n]]
                 }
             }
-    
 
-    return matrix
-    
-};
-</script>
+
+            return matrix
+
+        };
+
+        // 逆时针旋转90
+        /*
+         * [             
+         *  [1,2,3],   
+         *  [4,5,6],
+         *  [7,8,9]
+         * ]
+         * 
+         * [3,6,9]
+         * [2,5,8]
+         * [1,4,7]
+         * 
+         */
+        var rotateReverse = function(matrix) {
+            var len = matrix.length;
+            // 先转置
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < len - 1 - i; j++) {
+                    //  （i,j）=> (len-j-1,len-i-1)
+
+                    [matrix[i][j], matrix[len - j - 1][len - i - 1]] = [matrix[len - j - 1][len - i - 1], matrix[i][j]]
+                }
+            }
+            // 后镜像对称
+            for (var m = 0; m < len; m++) {
+                for (var n = 0; n < len / 2; n++) {
+                    [matrix[m][n], matrix[m][len - 1 - n]] = [matrix[m][len - 1 - n], matrix[m][n]]
+                }
+            }
+
+
+            return matrix
+        }
+
+        const a = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+        console.log(rotateReverse(a));
+    </script>
 
 </body>
+
 </html>

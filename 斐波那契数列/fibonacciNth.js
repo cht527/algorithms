@@ -21,3 +21,13 @@ function fibonacci(n){
   }
   return fibonacci(n-1)+fibonacci(n-2)
 }
+
+// 尾递归优化
+function fibonacciOpt(n, start=1, cur=1){
+  if(n<=2){
+    return cur
+  }
+
+  return fibonacciOpt(n-1,cur,cur+start)
+}
+

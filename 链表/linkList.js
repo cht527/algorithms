@@ -50,13 +50,15 @@ class LinkedList {
     insert(index, node){
         const targetNode = this.findAsIndex(index-1);
         node.next = targetNode.next;
-        targetNode.next = node
+        targetNode.next = node;
+        this.length++
     }
     
     remove(index){
         const prevNode = this.findAsIndex(index-1);
         const nextNode = this.findAsIndex(index+1);
         prevNode.next = nextNode
+        this.length--
     }
 }
 

@@ -9,23 +9,21 @@
 输出: 6
 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
 */
-var maxSubArraySum = function(nums) {
-    var sum=0;
-    var max=nums[0];
-    for(let num of nums){
-        if(sum<=0){ // 小于0 对之后的子序列无影响,重置
-            sum=num
-        }else{      // 大于0 累加
-            sum+=num
-            
-        }
-        max=Math.max(max,sum) // 如果都是负数，遍历完成后比大小即可
 
+// 方法一：动态规划求和
+var maxSubArraySum = function(nums) {
+    const maxDP = [nums[0]];
+
+    for(let i=1;i<nums.length;i++){
+        // 需要连续
+        maxDP[i] = Math.max(nums[i], maxDP[i-1] + nums[i])
+        
     }
-    return max
+
+    return Math.max(...maxDP)
 };
 
-// 最大和子序列
+// 方法二：可以先最大和子序列，然后求和即可
 function maxSubArray(array) {
     let maxSubArrayStartIndex=0;
     let maxSubArrayLength=0;
